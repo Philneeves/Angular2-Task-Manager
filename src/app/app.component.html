@@ -1,3 +1,42 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Philip's Angular2 Task Manager </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+	<div class="row">
+		<app-todos></app-todos>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+	<h3>Add Task to Firebase Database</h3>
+
+	<input type="text" #newitem />
+		  <button class="btn btn-danger" (click)="addItem(newitem.value)">Add</button>
+		  <button class="btn btn-danger" (click)="deleteEverything()">Delete All</button>
+	<h3>Task List</h3>
+		<ol>
+		    <li *ngFor="let item of items | async">
+		      <input type="text" #updatetext [value]="item.text" />
+		      <button class="btn btn-danger" (click)="updateItem(item.$key, updatetext.value)">Update</button>
+		      <button class="btn btn-danger" (click)="deleteItem(item.$key)">Delete</button>
+		    </li>
+		  </ol>
+	</div>
+</div>
